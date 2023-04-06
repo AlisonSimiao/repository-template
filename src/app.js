@@ -5,7 +5,6 @@ const routes = require('./routes/index.router')
 
 const app = express()
 
-
 app.use(cors())
 app.disable('etag')
 

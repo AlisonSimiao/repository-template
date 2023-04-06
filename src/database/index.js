@@ -1,12 +1,13 @@
-const { Pool} = require('pg')
 require('dotenv').config()
 
+const connection = `postgres://postgres:${process.env.PASS}@db.dtjfgxxqalgxtrnnuulc.supabase.co:6543/postgres`
 
-const connectionString = `postgres://postgres:${process.env.PASS}@db.dtjfgxxqalgxtrnnuulc.supabase.co:6543/postgres`
- 
-const pool = new Pool({
-  connectionString,
-})
 
-module.exports = pool;
+const database = require('knex')({
+  client: 'pg',
+  connection,
+  searchPath: ['knex', 'public'],
+});
+
+module.exports = database;
 
